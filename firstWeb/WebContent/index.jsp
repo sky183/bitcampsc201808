@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,8 @@
 
 <h1>include Test</h1>
 <hr>
-<%@ include file="common/nav.jsp" %>
+<%-- <%@ include file="common/nav.jsp" %> --%>
+<jsp:include page="common/nav.jsp" />
 <div class="wrap">
 <%@ include file="common/left.jsp" %>
 <%@ include file="common/right.jsp" %>
