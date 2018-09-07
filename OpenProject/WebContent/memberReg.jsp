@@ -1,11 +1,31 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="member.model.MemberInfo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	List<MemberInfo> members = null;
+
+	if(application.getAttribute("members") != null){
+		members = (List<MemberInfo>)application.getAttribute("members");			
+	} else {
+		members = new ArrayList<MemberInfo>();
+	}
+%>
 <%
 	request.setCharacterEncoding("utf-8");
 
 	String userId = request.getParameter("userId");
 	String password = request.getParameter("password");
 	String userName = request.getParameter("userName");
+	
+	MemberInfo memberInfo = new MemberInfo();
+	memberInfo.setUserId(userId);
+	memberInfo.setUserName(userName);
+	memberInfo.setPassword(password);
+	
+	members.add(memberInfo);
+	application.setAttribute("members", members);
 %>
 <!DOCTYPE html>
 <html>
