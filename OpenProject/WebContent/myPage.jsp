@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<jsp:useBean id="loginInfo" class="member.model.LoginInfo" scope="session" />	
+	
 <%
-	String id = (String)request.getSession(false).getAttribute("userId");
-	String name = (String)request.getSession(false).getAttribute("userName");
+	//String id = (String)request.getSession(false).getAttribute("userId");
+	//String name = (String)request.getSession(false).getAttribute("userName");
 
-	if (id == null){
+	if (loginInfo == null){
 		%>
 		
 	<script>
@@ -52,11 +54,11 @@ h2, td {
 			<table>
 				<tr>
 					<td>아이디(이메일)</td>
-					<td><%= id %></td>
+					<td><%= loginInfo.getUserId() %></td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><%= name %></td>
+					<td><%= loginInfo.getUserName() %></td>
 				</tr>
 			</table>
 

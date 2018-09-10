@@ -31,7 +31,13 @@
 		
 		if(memberInfo.getPassword().equals(pw)){
 			memberInfo.setPassword("");
-			request.getSession(false).setAttribute("loginInfo", memberInfo);
+			//request.getSession(false).setAttribute("loginInfo", memberInfo);
+			%>
+			<jsp:useBean id="loginInfo" class="member.model.LoginInfo" scope="session" />
+			<jsp:setProperty property="userId" name="loginInfo" value="<%= memberInfo.getUserId() %>"/>
+			<jsp:setProperty property="userName" name="loginInfo" value="<%= memberInfo.getUserName() %>"/>
+			<jsp:setProperty property="userPhoto" name="loginInfo" value="<%= memberInfo.getUserPhoto() %>"/>
+			<%
 			response.sendRedirect("myPage.jsp");
 		}
 
