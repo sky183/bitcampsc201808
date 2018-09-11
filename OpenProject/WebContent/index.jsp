@@ -11,6 +11,10 @@
 	} else {
 		members = new ArrayList<MemberInfo>();
 	}
+	
+	for(int i=0; i < members.size() ; i++){
+		System.out.println(members.get(i));
+	}
 %>
 <!DOCTYPE html>
 <html>
