@@ -29,7 +29,7 @@
 			}
 		}
 		
-		if(memberInfo.getPassword().equals(pw)){
+		if(memberInfo != null && memberInfo.getPassword().equals(pw)){
 			memberInfo.setPassword("");
 			//request.getSession(false).setAttribute("loginInfo", memberInfo);
 			%>
