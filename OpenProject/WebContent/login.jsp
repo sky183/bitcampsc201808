@@ -3,21 +3,26 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
+<jsp:useBean id="loginInfo" class="member.model.LoginInfo" scope="session" />
+<% 
+ 	//멤버 리스트 생성
 	List<MemberInfo> members = null;
-
+	
+	//어플리케이션 영역의 멤버 속성이 널이 아닐 경우 멤버 속성을 리스트로 변환하여 멤버스에 담는다.
 	if (application.getAttribute("members") != null) {
 		members = (List<MemberInfo>) application.getAttribute("members");
 	} else {
 		members = new ArrayList<MemberInfo>();
 	}
 %>
-<%
+<% 
 	request.setCharacterEncoding("utf-8");
 
 	String id = request.getParameter("userId");
 	String pw = request.getParameter("password");
-
+	String chk = request.getParameter("chk");
+	
+	
 	if (id != null && pw != null) {
 
 		MemberInfo memberInfo = null;
@@ -30,20 +35,25 @@
 		}
 		
 		if(memberInfo != null && memberInfo.getPassword().equals(pw)){
-			memberInfo.setPassword("");
-			//request.getSession(false).setAttribute("loginInfo", memberInfo);
 			%>
-			<jsp:useBean id="loginInfo" class="member.model.LoginInfo" scope="session" />
 			<jsp:setProperty property="userId" name="loginInfo" value="<%= memberInfo.getUserId() %>"/>
 			<jsp:setProperty property="userName" name="loginInfo" value="<%= memberInfo.getUserName() %>"/>
 			<jsp:setProperty property="userPhoto" name="loginInfo" value="<%= memberInfo.getUserPhoto() %>"/>
 			<%
+			   
+			   if(chk != null || chk == ""){
+                   Cookie cookie = new Cookie("id",id);
+                   response.addCookie(cookie);
+                   
+                //아이디 기억박스가 해제되어 있으면
+                } else{
+                   Cookie cookie = new Cookie("id","");
+                   cookie.setMaxAge(0);
+                   response.addCookie(cookie);
+                }
+
 			response.sendRedirect("myPage.jsp");
 		}
-
-		//request.getSession(false).setAttribute("userId", id);
-		//request.getSession(false).setAttribute("userName", "홍길동");
-		//response.sendRedirect("myPage.jsp");
 	}
 %>
 <!DOCTYPE html>

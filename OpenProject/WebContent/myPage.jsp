@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="loginInfo" class="member.model.LoginInfo" scope="session" />	
+<jsp:useBean id="loginInfo" class="member.model.LoginInfo" scope="session" />
 	
 <%
-	//String id = (String)request.getSession(false).getAttribute("userId");
-	//String name = (String)request.getSession(false).getAttribute("userName");
+	
+	System.out.println(loginInfo);
 
-	if (loginInfo == null){
+	if (loginInfo.getUserId() == null){
 		%>
 		
 	<script>
@@ -14,10 +14,11 @@
 		location.href = 'loginForm.jsp';
 	</script>	
 		
-		
 		<%
 	} else {
 %>
+
+
 <!DOCTYPE html>
 <html>
 <head>

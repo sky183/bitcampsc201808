@@ -3,5 +3,5 @@
 <%
 	request.getSession(false).invalidate();
 
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("loginForm.jsp");
 %>

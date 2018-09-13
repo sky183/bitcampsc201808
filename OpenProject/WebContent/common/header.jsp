@@ -6,9 +6,10 @@
 		<li><a href="index.jsp">메인</a></li>
 		<li><a href="memberRegForm.jsp">회원가입</a></li>
 		<%
-			String lid = (String)request.getSession(false).getAttribute("userId");
-		
-		if (lid == null) {		
+
+/* 		String lid = (String)request.getSession(false).getAttribute("userId"); */
+
+		if (loginInfo.getUserId() == null){
 		%>
 		<li><a href="loginForm.jsp">로그인</a></li>
 		<%} else { %>
