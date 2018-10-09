@@ -24,11 +24,11 @@ h2, td {
 		<h2>회원가입</h2>
 
 		<hr>
-		<form action="memberReg.jsp" method="post">
+		<form action="memberAction" method="post">
 			<table>
 				<tr>
 					<td>아이디(이메일)</td>
-					<td><input type="text" name="userId"></td>
+					<td><input type="text" name="userId" value></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
@@ -40,11 +40,28 @@ h2, td {
 				</tr>
 				<tr>
 					<td>사진</td>
-					<td><input type="file" name="photoFile"></td>
+					<td><input type="file" name="userPhoto"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit"></td>
 				</tr>
+				<tr>
+					<td colspan="2" style="padding-left: 10px; color: red;" id="error">
+						<%
+							String error = (String) request.getAttribute("error");
+							if (error != null) {
+						%>
+						<b><%=error%></b>
+						<%
+							} else {
+						%>
+						<b>&nbsp</b>
+						<%
+							}
+						%>
+					</div>
+				</tr>
+
 			</table>
 
 		</form>

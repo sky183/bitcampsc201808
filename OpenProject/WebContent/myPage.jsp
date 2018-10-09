@@ -1,24 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="loginInfo" class="member.model.LoginInfo" scope="session" />
-	
-<%
-	
-	System.out.println(loginInfo);
-
-	if (loginInfo.getUserId() == null){
-		%>
-		
-	<script>
-		alert('로그인 후 사용가능한 서비스입니다.');
-		location.href = 'loginForm.jsp';
-	</script>	
-		
-		<%
-	} else {
-%>
-
-
+<%@ include file="common/headercheck.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,11 +37,11 @@ h2, td {
 			<table>
 				<tr>
 					<td>아이디(이메일)</td>
-					<td><%= loginInfo.getUserId() %></td>
+					<td><%= mem.getUserId() %></td>
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><%= loginInfo.getUserName() %></td>
+					<td><%=mem.getUserName()%></td>
 				</tr>
 			</table>
 

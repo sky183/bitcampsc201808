@@ -39,7 +39,7 @@
 <h2>로그인</h2>
     
     <hr>
-    <form action="login.jsp" method="post">
+    <form action="LoginAction" method="post">
         <table>
             <tr>
                 <td>아이디</td>
@@ -52,7 +52,23 @@
             <tr>
                 <td><input type="submit" value="로그인"></td>
                 <td><input type="checkbox" name="chk" <%=chk %>>아이디 기억</td>
-            </tr>          
+            </tr>   
+            				<tr>
+					<td colspan="2" style="padding-left: 10px; color: red;" id="error">
+						<%
+							String error = (String) request.getAttribute("error");
+							if (error != null) {
+						%>
+						<b><%=error%></b>
+						<%
+							} else {
+						%>
+						<b>&nbsp</b>
+						<%
+							}
+						%>
+					</div>
+				</tr>      
         </table>
     
     </form>

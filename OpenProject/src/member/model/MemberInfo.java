@@ -1,11 +1,46 @@
 package member.model;
 
-public class MemberInfo {
+import java.sql.Date;
 
+public class MemberInfo {
+	
+	private int idx = 0;
 	private String userId;
 	private String password;
 	private String userName;
 	private String userPhoto;
+	private Date regDate;
+	
+	public MemberInfo() {
+		
+	}
+	public MemberInfo(String userId, String password, String userName, String userPhoto) {
+		this.userId = userId;
+		this.password = password;
+		this.userName = userName;
+		this.userPhoto = userPhoto;
+	}
+	
+	public MemberInfo(String userId, String password) {
+		this.userId = userId;
+		this.password = password;
+	}
+
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(Date date) {
+		this.regDate = date;
+	}
 
 	public String getUserId() {
 		return userId;
