@@ -11,6 +11,6 @@
 		location.href = 'loginForm.jsp';
 	</script>	
 		
-		<%
-	} else {
+	<%
+	} else {}
 %>

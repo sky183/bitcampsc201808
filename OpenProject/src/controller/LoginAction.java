@@ -43,10 +43,10 @@ public class LoginAction extends HttpServlet {
 		
 		if (memid == null || memid.equals("")) {
 			session.invalidate();
-			forward(request, response, "¾ÆÀÌµğ°¡ ¾ø½À´Ï´Ù.");
+			forward(request, response, "ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤."); 
 		} else if(!(mempw.equals(password))){
 			session.invalidate();
-			forward(request, response, "ºñ¹Ğ¹øÈ£°¡ Æ²¸³´Ï´Ù.");
+			forward(request, response, "ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë¦½ë‹ˆë‹¤.");
 		}
 			else {
 			session.setAttribute("MemberInfo", mem);
